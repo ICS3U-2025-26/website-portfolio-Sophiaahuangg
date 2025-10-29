@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 1</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit 1 | Sophia’s Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .unit-content {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px;
+      background-color: #fff0f8; /* soft pink background */
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .unit-content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5em;
+      color: #861d61;
+      margin-bottom: 20px;
+    }
+
+    .unit-content p {
+      font-size: 1.2em;
+      color: #5a004a;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .unit-content img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+    }
+
+    .unit-content a {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #ffb6c1;
+      color: #861d61;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .unit-content a:hover {
+      background-color: #ffa3b5;
+    }
+
+    pre {
+      background-color: #fce4ec;
+      color: #4a0043;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+      overflow-x: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: white;
+      color: #931061;
+      margin-top: 50px;
+      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+    }
+  </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
   <header>
     <nav class="navbar">
       <h1 class="logo">Sophia’s Portfolio</h1>
@@ -20,23 +88,39 @@
     </nav>
   </header>
 
+  <!-- Main Section -->
   <main>
-    <h2>Unit 1 Project</h2>
-    <img src="images/unit1-screenshot.jpg" alt="Unit 1 Screenshot" class="unit-image">
-    <p><strong>Task:</strong> Create a simple interactive web game.</p>
-    <p><strong>Design Choices:</strong> Used bright colors and clear fonts to improve readability and user experience.</p>
-    <p><strong>What I Learned:</strong> Learned how to manipulate the DOM with JavaScript and style elements with CSS.</p>
+    <section class="unit-content">
+      <h2>Unit 1: Problem Solving Process</h2>
 
-    <h3>Sample Code:</h3>
-    <pre><code>
-function startGame() {
-  alert("Welcome to Unit 1 Game!");
-}
-    </code></pre>
+      <!-- Make sure your file is renamed to something simple like flowchart.png -->
+      <img src="flowchart.png" alt="Flowchart design showing problem-solving steps">
+
+      <p>
+        In this unit, I learned how to approach problems logically and structure solutions using input, processing, and output (IPO). 
+        My project involved creating flowcharts to solve different problems—such as calculating areas, converting units, and computing averages. 
+        I focused on clarity, organization, and making sure each step followed a logical flow. 
+        This project helped me understand the foundation of programming and how clear structure leads to fewer errors later on.
+      </p>
+
+      <p>
+        I also learned how to think algorithmically—breaking down a complex task into smaller steps. 
+        Below is a link to my completed flowchart file and a small code-style example that shows the same logic in pseudocode.
+      </p>
+
+      <a href="flowchart.jpg" target="_blank">View My Flowchart PDF</a>
+
+      <h3>Example Code Snippet</h3>
+      <pre><code>
+INPUT: side length (s)
+PROCESS: area = s * s
+OUTPUT: area
+      </code></pre>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 Sophia Huang | Web Development Portfolio</p>
+    <p>© 2025 Sophia Huang | All Rights Reserved</p>
   </footer>
 </body>
 </html>
