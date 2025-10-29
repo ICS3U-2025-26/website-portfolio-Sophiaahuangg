@@ -6,51 +6,52 @@
   <title>Unit 1 | Sophia’s Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      background-color: #fff6fa;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
     .unit-content {
       max-width: 900px;
       margin: 60px auto;
       padding: 40px;
-      background-color: #fff0f8; /* soft pink background */
+      background-color: #fff0f8;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       text-align: center;
     }
 
-    .unit-content h2 {
+    .unit-content h2, .unit-content h3 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.5em;
       color: #861d61;
+    }
+
+    .unit-content h2 {
+      font-size: 2.5em;
       margin-bottom: 20px;
     }
 
+    .unit-content h3 {
+      font-size: 1.8em;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
+
     .unit-content p {
-      font-size: 1.2em;
+      font-size: 1.15em;
       color: #5a004a;
       line-height: 1.7;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .unit-content img {
       width: 100%;
-      max-width: 700px;
+      max-width: 750px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       margin-bottom: 25px;
-    }
-
-    .unit-content a {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #ffb6c1;
-      color: #861d61;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-
-    .unit-content a:hover {
-      background-color: #ffa3b5;
     }
 
     pre {
@@ -73,8 +74,8 @@
     }
   </style>
 </head>
+
 <body>
-  <!-- Navigation Bar -->
   <header>
     <nav class="navbar">
       <h1 class="logo">Sophia’s Portfolio</h1>
@@ -88,27 +89,66 @@
     </nav>
   </header>
 
-  <!-- Main Section -->
   <main>
     <section class="unit-content">
       <h2>Unit 1: Problem Solving Process</h2>
 
-      <!-- Make sure your file is renamed to something simple like flowchart.png -->
-      <img src="flowchart.png" alt="Flowchart design showing problem-solving steps">
-
       <p>
-        In this unit, I learned how to approach problems logically and structure solutions using input, processing, and output (IPO). 
-        My project involved creating flowcharts to solve different problems—such as calculating areas, converting units, and computing averages. 
-        I focused on clarity, organization, and making sure each step followed a logical flow. 
-        This project helped me understand the foundation of programming and how clear structure leads to fewer errors later on.
+        In this unit, I learned how to think through problems step by step using the problem-solving process. I practiced creating algorithms and flowcharts, which helped me understand how programmers plan their code before writing it.
       </p>
 
+      <!-- Project 1 -->
+      <h3>01 – PC Build Project</h3>
+      <img src="pcbuild.png" alt="Screenshot of PC Part Picker Build">
       <p>
-        I also learned how to think algorithmically—breaking down a complex task into smaller steps. 
-        Below is a link to my completed flowchart file and a small code-style example that shows the same logic in pseudocode.
+        For this project, I researched computer parts and built a PC setup. I learned how each component, such as the CPU, GPU, RAM, and power supply, works together to make a computer run smoothly. It showed me why it is important to choose compatible and efficient parts.
       </p>
 
-      <a href="flowchart.jpg" target="_blank">View My Flowchart PDF</a>
+      <!-- Project 2 -->
+      <h3>02 – Introduction to Programming</h3>
+      <img src="scratchcode.png" alt="Scratch project showing loops and motion blocks">
+      <p>
+        I practiced basic coding ideas in Scratch. My project used loops, motion, and if-statements to create patterns when different keys were pressed. I saw how small changes in the code could completely change the outcome and make the program behave differently.
+      </p>
+
+      <!-- Project 3 -->
+      <h3>03 – Peanut Butter & Jelly Sandwich Algorithm</h3>
+      <img src="pbj.png" alt="Peanut Butter and Jelly pseudocode screenshot">
+      <p>
+        I wrote pseudocode that explains how to make a peanut butter and jelly sandwich. It helped me understand that programming is about giving clear and specific steps. If a step is missing or unclear, the program might not work the way you want it to.
+      </p>
+
+      <pre><code>
+1. Open the bag of bread
+2. Take 2 pieces of bread and place them on a plate
+3. Open the jar of jelly
+4. Scoop jelly and spread evenly on one slice
+5. Repeat with peanut butter on the other slice
+6. Put the slices together and enjoy
+      </code></pre>
+
+      <!-- Project 4 -->
+      <h3>04 – Implementing Algorithms</h3>
+      <img src="countingcode.png" alt="Scratch counting algorithm project">
+      <p>
+        I made a simple counting program in Scratch. It used a loop that increased a counter by 2 each time and showed the number on the screen. This project taught me how loops, variables, and timing all connect in a working program.
+      </p>
+
+      <pre><code>
+When green flag clicked
+Set counter to 0
+Repeat 50 times:
+    Change counter by 2
+    Say counter
+    Wait 0.5 seconds
+      </code></pre>
+
+      <!-- Project 5 -->
+      <h3>05 – Algorithm Flowchart</h3>
+      <img src="flowchart.jpg" alt="Flowchart showing problem-solving steps">
+      <p>
+        I created a flowchart to show how an algorithm takes input, does a process, and gives an output. Turning the flowchart into code helped me think more logically about how to organize steps and decisions.
+      </p>
 
       <h3>Example Code Snippet</h3>
       <pre><code>
@@ -120,7 +160,6 @@ OUTPUT: area
   </main>
 
   <footer>
-    <p>© 2025 Sophia Huang | All Rights Reserved</p>
   </footer>
 </body>
 </html>
