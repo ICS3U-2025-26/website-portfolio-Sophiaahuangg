@@ -1,37 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Academic Honesty:
-All work on this page is my own. I received help from ChatGPT specifically for:
-- Creating the navigation bar structure
-- Creating the table layout section in projects.html
-- Getting support with styling ideas and adjustments in style.css
-
-I also used Google Gemini to help fix a few small errors in my Unit 1 code.
-No one else edited or typed on my code. -->
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sopia's Portfolio | Home</title>
+  <title>Sophia's Portfolio | Home</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <header>
     <nav class="navbar">
       <h1 class="logo">Sophia's Portfolio</h1>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li class="dropdown">
-          <a href="projects.html">My Projects ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="unit1.html">Unit 1</a></li>
-            <li><a href="unit2.html">Unit 2</a></li>
-            <li><a href="unit3.html">Unit 3</a></li>
-            <li><a href="unit4.html">Unit 4</a></li>
-          </ul>
-        </li>
+        <li><a href="projects.html">My Projects</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="gaming.html">Gaming Corner</a></li>
@@ -40,25 +21,18 @@ No one else edited or typed on my code. -->
   </header>
 
   <main>
-    <section class="intro">
+    <section class="unit-content" style="text-align: center;">
       <h2>Welcome to My Portfolio</h2>
-      <p>Hi, I’m Sophia! This site showcases my projects and growth throughout the course. Explore each unit to see what I’ve built and learned.</p>
+      <p>Hi, I’m Sophia! This site showcases my projects, applications, and growth throughout my ICS3U Computer Science journey. Explore each segment to see what I’ve built and learned throughout the year.</p>
     </section>
 
     <section class="image-gallery">
-      <div class="image-container">
-        <img src="images/image1.png" />
-      </div>
-      <div class="image-container">
-        <img src="images/image2.png"/>
-      </div>
-      <div class="image-container">
-        <img src="images/image3.jpg"/>
-      </div>
-      <div class="image-container">
-        <img src="images/image4.jpg"/>
-      </div>
+      <div class="image-container"><img src="images/image1.png" alt="Gallery 1" /></div>
+      <div class="image-container"><img src="images/image2.png" alt="Gallery 2" /></div>
+      <div class="image-container"><img src="images/image3.jpg" alt="Gallery 3" /></div>
+      <div class="image-container"><img src="images/image4.jpg" alt="Gallery 4" /></div>
     </section>
   </main>
+  <footer><p>&copy; 2026 Sophia's Portfolio. All Rights Reserved.</p></footer>
 </body>
 </html>

@@ -5,85 +5,258 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Unit 3 | Sophia’s Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background-color: #fff6fa;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .unit-content {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 40px;
-      background-color: #fff0f8;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-
-    .unit-content h2, .unit-content h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      color: #861d61;
-    }
-
-    .unit-content h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    .unit-content h3 {
-      font-size: 1.8em;
-      margin-top: 40px;
-      margin-bottom: 15px;
-    }
-
-    .unit-content p {
-      font-size: 1.15em;
-      color: #5a004a;
-      line-height: 1.7;
-      margin-bottom: 25px;
-    }
-
-    .unit-content img {
-      width: 100%;
-      max-width: 750px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 25px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: white;
-      color: #931061;
-      margin-top: 50px;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
-    }
-  </style>
 </head>
-
 <body>
   <header>
     <nav class="navbar">
       <h1 class="logo">Sophia’s Portfolio</h1>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">My Projects</a></li>
+        <li><a href="projects.html" class="active">My Projects</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="about.html">About Me</a></li>
         <li><a href="gaming.html">Gaming Corner</a></li>
       </ul>
     </nav>
+    <div class="sub-nav">
+      <a href="unit1.html">Unit 1</a>
+      <a href="unit2.html">Unit 2</a>
+      <a href="unit3.html" class="active">Unit 3</a>
+      <a href="unit4.html">Unit 4</a>
+    </div>
   </header>
 
   <main>
     <section class="unit-content">
-      <h2>Unit 3: Coming Soon</h2>
- 
+      <h2>Unit 3: Intro to Python Programming</h2>
+      <p>This unit was super exciting because we finally moved away from basic web design layouts and started coding in actual Python! It was a bit confusing at first to get used to all the typing rules and loops, but it was really cool to see how a program can actually take information from a user and make things happen on screen.</p>
+      
+      <h3>1. Inputs and Variables</h3>
+      <p><strong>What I Learned:</strong> I learned that variables are basically like labeled boxes where the computer saves information so we can use it later. The trickiest part at the beginning was realizing that Python reads everything a user types as plain text words. So, if you want to do math with a number someone types in, you have to wrap it in <code>int()</code> to turn it into a real integer number. If you forget, your code will crash or act super weird!</p>
+      <pre>
+# Asking for a name and a number, then using int() so we can do math
+name = input("Enter your player name: ")
+cookies_eaten = input("How many cookies did you eat? ")
+cookies_eaten = int(cookies_eaten) # Changes text into a real number
+
+print(f"Welcome {name}! If you eat one more, you will have eaten {cookies_eaten + 1} cookies!")
+      </pre>
+
+      <h3>2. For Loops and Random Numbers</h3>
+      <p><strong>What I Learned:</strong> For loops are awesome because you don't have to copy and paste the exact same line of code a million times if you want something to repeat. You just tell the loop how many times to run. I also learned how to use <code>import random</code> which is super helpful for making games fun because it picks unpredictable numbers, like rolling a dice or choosing a random spot on a board.</p>
+      <pre>
+import random
+
+print("Rolling a dice 5 times in a row:")
+for i in range(5):
+    roll = random.randint(1, 6) # Picks a random number from 1 to 6
+    print(f"Roll #{i+1}: You got a {roll}!")
+      </pre>
+
+      <h3>3. If-Statements and While Loops</h3>
+      <p><strong>What I Learned:</strong> If-statements let your program make choices based on rules (like if your points are high enough, you win!). While loops are different from for loops because they don't have a set limit—they just keep running forever until a specific thing happens to stop them. I used them a lot to build input filters so that if a player types a wrong button or an out-of-bounds number, the game will just tell them it's wrong and ask again.</p>
+      <pre>
+# A simple loop that keeps asking until the user inputs a good number
+while True:
+    guess = int(input("Guess a number between 1 and 10: "))
+    
+    if guess < 1 or guess > 10:
+        print("Hey, that's not between 1 and 10! Try again.")
+    else:
+        print("Perfect! That works.")
+        break # This stops the loop from running forever
+      </pre>
+
+      <h3>4. Strings and Lists</h3>
+      <p><strong>What I Learned:</strong> Lists are just like giant shopping lists for your code where you can save a bunch of different values all inside one big variable box. I learned how to add new choices to lists using <code>.append()</code> and how to see if a value is already inside. This made tracking a player's history super easy, so I could check if they already guessed a certain coordinate before.</p>
+      <pre>
+# Making a quick list of places a player already guessed
+past_guesses = ["A1", "B3", "C5"]
+new_guess = input("Enter your next coordinate guess: ")
+
+if new_guess in past_guesses:
+    print("Oh come on, you already guessed that! Try something else.")
+else:
+    past_guesses.append(new_guess)
+    print("New guess added to your tracking list!")
+      </pre>
+
+      <h3>5. Custom Functions</h3>
+      <p><strong>What I Learned:</strong> Functions are basically shortcuts you create yourself. If you have a chunk of code you need to use in a bunch of different places, you can wrap it up using <code>def</code> and give it a nickname. Then, whenever you need that code to run, you just type the nickname instead of rewriting the whole thing. It keeps your code looking clean and makes finding bugs way easier.</p>
+      <pre>
+# Making a shortcut function to see if someone won
+def check_win(score):
+    if score >= 10:
+        return True
+    else:
+        return False
+
+# Using our shortcut nickname
+current_score = 12
+if check_win(current_score) == True:
+    print("Yay, you passed the high score and won!")
+      </pre>
+
+      <hr style="margin: 40px 0; border: 0; border-top: 1px solid #f2d1e5;" />
+
+      <h3>MadLib Project</h3>
+      <div class="flex-layout">
+        <div class="flex-side">
+          <p><strong>My Project Reflection & Challenges:</strong> The MadLib project was a super fun word game to code, but it definitely had some annoying challenges at first. The main goal was to get the computer to ask the user for random words (like nouns, verbs, and adjectives) and then stick them into a blank story template so it makes a funny paragraph.</p>
+          <p>The hardest part was getting the spacing and commas right. When I first tried to connect the user's words to my story sentences using plus signs (like <code>"The " + animal + " ran"</code>), I kept forgetting to add spaces inside the quotation marks. The final story looked like one giant, messy word! My teacher showed me how to use Python f-strings instead, which lets you just type the whole sentence normally and pop the variables right into curly brackets <code>{}</code>. That made it way easier to read and fixed all my spacing bugs instantly.</p>
+          
+          <h4 style="margin-top:20px; color:#861d61;">MadLib Run Clip (madlib.mp4):</h4>
+          <p style="font-size:0.9rem; margin-bottom:10px;">Here is a video of me testing out the program in my terminal with some silly inputs:</p>
+          <div class="canvas-holder">
+            <video width="100%" controls style="border-radius:12px; box-shadow: 0 6px 20px rgba(134,29,97,0.15);">
+              <source src="videos/madlib.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        
+        <div class="flex-side">
+          <h4 style="color:#861d61; margin-bottom:10px;">Simple MadLib Code Example:</h4>
+          <pre>
+# Simple MadLib Game
+
+print("--- Welcome to the MadLib Word Game! ---")
+print("Please enter the types of words requested below:\n")
+
+# Gathering the words from the user
+adjective1 = input("Type an adjective (describing word): ")
+noun1 = input("Type a noun (a place or thing): ")
+animal = input("Type an animal: ")
+verb1 = input("Type an action verb (past tense): ")
+adjective2 = input("Type another adjective: ")
+
+print("\n--- Here is your funny story! ---")
+
+# Using an f-string to cleanly insert the words without messy spaces
+story = f"On a very {adjective1} afternoon, Sophia decided to visit the local {noun1}."
+story2 = f"Suddenly, a wild {animal} appeared and {verb1} right across the room!"
+story3 = f"Everyone thought it was absolutely {adjective2}. The end!"
+
+# Printing the final story to the terminal screen
+print(story)
+print(story2)
+print(story3)
+          </pre>
+        </div>
+      </div>
+
+      <hr style="margin: 40px 0; border: 0; border-top: 1px solid #f2d1e5;" />
+
+      <h3>Table Top Game: "Eat the Cookies"</h3>
+      <div class="flex-layout">
+        <div class="flex-side">
+          <p><strong>My Project Reflection & Challenges:</strong> This was my big final project for the unit! It’s a two-player game that plays a lot like Battleship, but instead of using war ships, you are hiding different sized cookies on a 5x5 plate grid, and the other player tries to guess where they are to "eat" them.</p>
+          <p>The hardest part by far was making sure the cookies were put down correctly. I had to check that the columns or rows were touching and that they didn't accidentally overlap each other or go completely off the edge of the board. I had to use simple grids, lists, and a bunch of if-statements to make sure everything stayed in bounds. It took me a long time to fix all the errors, but it felt so satisfying when it finally worked perfectly! You can watch the gameplay clip below to see how a full match works.</p>
+          
+          <h4 style="margin-top:25px; color:#861d61;">Gameplay Run Demonstration:</h4>
+          <video width="100%" controls style="border-radius:12px; margin-top:10px; box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+            <source src="videos/eat-the-cookies.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        
+        <div class="flex-side">
+          <h4 style="color:#861d61; margin-bottom:10px;">Simple Python Source Code:</h4>
+          <pre>
+import random
+
+# A simple, easy-to-understand version of Eat the Cookies!
+
+# Setup empty boards for both players using "~" for empty spots
+p1_grid = []
+p2_grid = []
+for i in range(5):
+    p1_grid.append(["~"] * 5)
+    p2_grid.append(["~"] * 5)
+
+# Simple function to print the current board onto the screen
+def show_board(grid):
+    print("  0 1 2 3 4")
+    for row in range(5):
+        print(str(row) + " " + " ".join(grid[row]))
+    print()
+
+# Get the names of our players
+p1_name = input("Player 1 Name: ")
+p2_name = input("Player 2 Name: ")
+
+# Player 1 hides a cookie that takes up 2 spots side-by-side
+print(f"\n{p1_name}, let's hide your cookie.")
+p1_row = int(input("Enter row number (0-4): "))
+p1_col1 = int(input("Enter first column spot (0-4): "))
+p1_col2 = int(input("Enter second column spot (0-4): "))
+
+# Marking it on Player 1's secret grid as "C" for Cookie
+p1_grid[p1_row][p1_col1] = "C"
+p1_grid[p1_row][p1_col2] = "C"
+
+# Player 2 hides a cookie that takes up 2 spots side-by-side
+print(f"\n{p2_name}, let's hide your cookie.")
+p2_row = int(input("Enter row number (0-4): "))
+p2_col1 = int(input("Enter first column spot (0-4): "))
+p2_col2 = int(input("Enter second column spot (0-4): "))
+
+p2_grid[p2_row][p2_col1] = "C"
+p2_grid[p2_row][p2_col2] = "C"
+
+# Setup display grids to track hits and misses as we play
+p1_guesses = [["~"]*5 for i in range(5)]
+p2_guesses = [["~"]*5 for i in range(5)]
+
+p1_score = 0
+p2_score = 0
+turn = 1
+
+print("\n--- Both players ready? Let's start eating! ---")
+
+# Main turn-taking loop
+while p1_score < 2 and p2_score < 2:
+    if turn == 1:
+        print(f"\n{p1_name}'s Turn! Here is what you've guessed so far:")
+        show_board(p1_guesses)
+        
+        g_row = int(input("Guess Row (0-4): "))
+        g_col = int(input("Guess Col (0-4): "))
+        
+        if p2_grid[g_row][g_col] == "C":
+            print("HIT! You found a piece of their cookie!")
+            p1_guesses[g_row][g_col] = "X"
+            p1_score += 1
+        else:
+            print("MISS! Just crumbs here.")
+            p1_guesses[g_row][g_col] = "O"
+        turn = 2
+    else:
+        print(f"\n{p2_name}'s Turn! Here is what you've guessed so far:")
+        show_board(p2_guesses)
+        
+        g_row = int(input("Guess Row (0-4): "))
+        g_col = int(input("Guess Col (0-4): "))
+        
+        if p1_grid[g_row][g_col] == "C":
+            print("HIT! You found a piece of their cookie!")
+            p2_guesses[g_row][g_col] = "X"
+            p2_score += 1
+        else:
+            print("MISS! Just crumbs here.")
+            p2_guesses[g_row][g_col] = "O"
+        turn = 1
+
+# Check scores to see who won the whole match
+if p1_score == 2:
+    print(f"\nAwesome job {p1_name}! You ate all the cookies and won!")
+else:
+    print(f"\nAwesome job {p2_name}! You ate all the cookies and won!")
+          </pre>
+        </div>
+      </div>
     </section>
   </main>
+  <footer><p>&copy; 2026 Sophia's Portfolio. High School Computer Science Project.</p></footer>
 </body>
 </html>

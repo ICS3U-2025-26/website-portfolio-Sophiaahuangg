@@ -1,89 +1,262 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unit 3 | Sophia’s Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background-color: #fff6fa;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
+<div class="project-showcase" style="border: 2px solid #f2d1e5; border-radius: 16px; padding: 25px; background-color: #fffafc; margin: 30px 0; box-shadow: 0 4px 15px rgba(134, 29, 97, 0.05);">
+  
+  <section class="unit-content">
+    <h2 style="color: #861d61; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f2d1e5; padding-bottom: 10px;">Final Project: Cake Smashing Game</h2>
+    
+    <div class="flex-layout" style="display: flex; flex-wrap: wrap; gap: 25px; margin-bottom: 30px;">
+      
+      <div class="flex-side" style="flex: 1; min-width: 280px;">
+        <p style="line-height: 1.6; margin-bottom: 15px;"><strong>My Coding Process and Design Reflections:</strong> This is my final culminating game for the unit, called Cake Smash! My design process focused on building an interactive arcade game styled like Whac-A-Mole, but using custom cake assets instead. I wanted to make the game fun for everyone, so I created a difficulty menu at the start using a <code>gameState</code> controller variable that switches between the title screen, level selection, the active match, and the game over panel.</p>
+        
+        <p style="line-height: 1.6; margin-bottom: 25px;">The trickiest part of the coding process was managing the cake spawning timers across the different difficulty tiers. I used an object array to hold values for Easy, Medium, and Hard speeds. To keep track of individual cakes popping up from the ground holes, I used the <code>millis()</code> clock engine. If a cake stays active on screen for too long without the player clicking it, the code automatically removes the cake asset, adds to the miss counter, and shifts our HUD display heart vectors. It took a lot of debugging to prevent cakes from spawning over menu boxes, but the state machine works perfectly now!</p>
+        
+        <h3 style="color: #861d61; font-size: 1.3rem; margin-bottom: 15px;">Project Workspace & Code Screenshots</h3>
+        
+        <div class="screenshot-container" style="margin-bottom: 15px;">
+          <p style="font-size: 0.9rem; margin-bottom: 5px; color: #555;"><strong><cake1 class="png"></cake1>:</strong> Rendering logic array loop and HUD heads-up-display code blocks.</p>
+          <img src="images/cake1.png" alt="Cake 1 Code Screenshot" style="width: 100%; border: 1px solid #e8c5dc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+        </div>
+
+        <div class="screenshot-container" style="margin-bottom: 15px;">
+          <p style="font-size: 0.9rem; margin-bottom: 5px; color: #555;"><strong><cake2 class="png"></cake2>:</strong> Game over layout box coordinates alignment math panel tracker logic.</p>
+          <img src="images/cake2.png" alt="Cake 2 Code Screenshot" style="width: 100%; border: 1px solid #e8c5dc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+        </div>
+
+        <div class="screenshot-container" style="margin-bottom: 25px;">
+          <p style="font-size: 0.9rem; margin-bottom: 5px; color: #555;"><strong><cake3 class="png"></cake3>:</strong> Main menu scene environment, start triggers, and file system setup panel.</p>
+          <img src="images/cake3.png" alt="Cake 3 Environment Screenshot" style="width: 100%; border: 1px solid #e8c5dc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+        </div>
+
+        <h3 style="color: #861d61; font-size: 1.3rem; margin-bottom: 10px;">Gameplay Screen Recording</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 12px; color: #555;">Check out this clip showing how the hard mode works when the cakes start spawning super fast!</p>
+        <div class="canvas-holder" style="border: 1px solid #e8c5dc; border-radius: 12px; overflow: hidden; background: #000; margin-bottom: 20px;">
+          <video width="100%" controls style="display: block;">
+            <source src="videos/cake4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="code-display-box" style="margin-top: 35px; border-top: 1px dashed #e8c5dc; padding-top: 25px;">
+      <h3 style="color: #861d61; font-size: 1.3rem; margin-bottom: 10px;">Complete Game Script Source Code</h3>
+      <p style="font-size: 0.95rem; margin-bottom: 15px; color: #555;">Here is the full, copyable JavaScript code block for my complete p5.js project environment:</p>
+      
+      <div class="code-wrapper" style="position: relative; border-radius: 8px; overflow: hidden; border: 1px solid #e1d3dc;">
+        <pre style="margin: 0; padding: 20px; background: #2a2427; color: #f5edf2; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; line-height: 1.5; overflow-x: auto; max-height: 500px;">
+// GAME STATE
+let gameState = "title";
+let currentLevel = "easy";
+let levels = {
+  easy:   { cakeTime: 1500, spawnInterval: 1000, maxActive: 3 },
+  medium: { cakeTime: 1000, spawnInterval: 700,  maxActive: 4 },
+  hard:   { cakeTime: 700,  spawnInterval: 500,  maxActive: 5 }
+};
+
+let CAKE_TIME = 1500;
+let SPAWN_INTERVAL = 1000;
+let MAX_ACTIVE_CAKES = 3;
+
+// IMAGES
+let startImg;
+let titleImg;
+let bgImg;
+let cakeImgs = [];
+
+// SOUNDS
+let crunchSound;
+let missSound;
+let gameOverSound;
+let levelUpSound;
+
+// BUTTONS
+let startButton = { x: 0, y: 0, w: 200, h: 70 };
+let playAgainButton = { x: 0, y: 260, w: 250, h: 60 };
+let levelButtons = [];
+
+// GAME DATA
+let score = 0;
+let misses = 0;
+const MAX_MISSES = 3;
+let holes = [];
+const HOLE_RADIUS = 35;
+let nextSpawnTime = 0;
+
+// load images and assets
+function preload() {
+  startImg = loadImage("images/StartGame.png");
+  titleImg = loadImage("images/cakesmashing.png");
+  bgImg = loadImage("images/background.png");
+  cakeImgs[0] = loadImage("images/cake1.png");
+  cakeImgs[1] = loadImage("images/cake2.png");
+  cakeImgs[2] = loadImage("images/cake3.png");
+  cakeImgs[3] = loadImage("images/cake4.png");
+  cakeImgs[4] = loadImage("images/cake5.png");
+  cakeImgs[5] = loadImage("images/cake6.png");
+  
+  crunchSound = loadSound("sounds/crunch.mp3");
+  missSound = loadSound("sounds/miss.mp3");
+  gameOverSound = loadSound("sounds/gameover.mp3");
+  levelUpSound = loadSound("sounds/levelup.mp3");
+}
+
+function setup() {
+  createCanvas(600, 400);
+  textAlign(CENTER, CENTER);
+  buildHoles();
+  startButton.x = width / 2 - 100;
+  startButton.y = height * 0.55;
+  playAgainButton.x = width / 2 - 125;
+  levelButtons = [
+    { label: "Easy",   level: "easy",   x: width/2 - 125, y: 180, w: 250, h: 50 },
+    { label: "Medium", level: "medium", x: width/2 - 125, y: 240, w: 250, h: 50 },
+    { label: "Hard",   level: "hard",   x: width/2 - 125, y: 300, w: 250, h: 50 }
+  ];
+}
+
+function draw() {
+  background(255);
+  if (gameState === "title") { drawTitleScreen(); }
+  else if (gameState === "levelselect") { drawLevelSelectScreen(); }
+  else if (gameState === "play") { drawPlayScreen(); }
+  else if (gameState === "gameover") { drawGameOverScreen(); }
+}
+
+function drawTitleScreen() {
+  image(titleImg, 0, 0, width, height);
+  fill(255, 235, 245, 220);
+  rect(50, height - 120, width - 100, 80, 10);
+  fill(120, 30, 70);
+  textSize(14);
+  text("HOW TO PLAY:", width/2, height - 100);
+  textSize(12);
+  text("Click on cakes before they disappear!", width/2, height - 80);
+  text("Miss 3 cakes and it's GAME OVER!", width/2, height - 60);
+  image(startImg, startButton.x, startButton.y, startButton.w, startButton.h);
+}
+
+function drawLevelSelectScreen() {
+  image(bgImg, 0, 0, width, height);
+  fill(0); textSize(36); text("Choose Difficulty", width / 2, 100);
+  for (let b of levelButtons) {
+    fill(255, 140, 180); rect(b.x, b.y, b.w, b.h, 12);
+    fill(255); textSize(18); text(b.label, b.x + b.w/2, b.y + b.h/2);
+  }
+}
+
+function mousePressed() {
+  if (gameState === "title" && isInsideButton(startButton)) {
+    gameState = "levelselect"; return;
+  }
+  if (gameState === "levelselect") {
+    for (let b of levelButtons) {
+      if (isInsideButton(b)) {
+        currentLevel = b.level; applyLevelSettings(); resetGame(); return;
+      }
     }
-
-    .unit-content {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 40px;
-      background-color: #fff0f8;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      text-align: center;
+  }
+  if (gameState === "gameover" && isInsideButton(playAgainButton)) {
+    gameState = "levelselect"; return;
+  }
+  if (gameState === "play") {
+    for (let h of holes) {
+      if (!h.active) continue;
+      let d = dist(mouseX, mouseY, h.x, h.y);
+      if (d < HOLE_RADIUS) {
+        score++; h.active = false; crunchSound.play();
+      }
     }
+  }
+}
 
-    .unit-content h2, .unit-content h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      color: #861d61;
+function isInsideButton(button) {
+  return (mouseX > button.x && mouseX < button.x + button.w && mouseY > button.y && mouseY < button.y + button.h);
+}
+
+function applyLevelSettings() {
+  let s = levels[currentLevel];
+  CAKE_TIME = s.cakeTime; SPAWN_INTERVAL = s.spawnInterval; MAX_ACTIVE_CAKES = s.maxActive;
+}
+
+function drawPlayScreen() {
+  image(bgImg, 0, 0, width, height);
+  fill(230, 160, 190, 120); rect(0, height - 40, width, 40);
+  spawnCakes(); checkExpiredCakes(); drawHoles(); drawHUD();
+}
+
+function buildHoles() {
+  holes = []; let spacingX = 150; let spacingY = 110;
+  let startX = width / 2 - spacingX; let startY = 140; let index = 0;
+  for (let row = 0; row < 2; row++) {
+    for (let col = 0; col < 3; col++) {
+      holes.push({ x: startX + col * spacingX, y: startY + row * spacingY, active: false, timer: 0, img: cakeImgs[index] });
+      index++;
     }
+  }
+}
 
-    .unit-content h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+function spawnCakes() {
+  if (millis() < nextSpawnTime) return;
+  nextSpawnTime = millis() + SPAWN_INTERVAL;
+  let active = holes.filter(h => h.active).length;
+  if (active >= MAX_ACTIVE_CAKES) return;
+  let inactive = holes.filter(h => !h.active);
+  if (inactive.length === 0) return;
+  let chosen = random(inactive); chosen.active = true; chosen.timer = millis();
+}
+
+// EXPIRATION MISS CHECKER
+function checkExpiredCakes() {
+  for (let h of holes) {
+    if (h.active && millis() - h.timer > CAKE_TIME) {
+      h.active = false; misses++;
+      if (misses >= MAX_MISSES) { gameState = "gameover"; }
     }
+  }
+}
 
-    .unit-content h3 {
-      font-size: 1.8em;
-      margin-top: 40px;
-      margin-bottom: 15px;
+function drawHoles() {
+  for (let h of holes) {
+    if (h.active) {
+      let size = HOLE_RADIUS * 3; imageMode(CENTER); image(h.img, h.x, h.y, size, size);
+    } else {
+      noStroke(); fill(60, 20, 40); ellipse(h.x, h.y, HOLE_RADIUS * 2);
     }
+  }
+  imageMode(CORNER);
+}
 
-    .unit-content p {
-      font-size: 1.15em;
-      color: #5a004a;
-      line-height: 1.7;
-      margin-bottom: 25px;
-    }
+function drawHUD() {
+  fill(255, 170, 200, 210); rect(0, 0, width, 40);
+  fill(120, 30, 70); textSize(16); textAlign(LEFT, CENTER); text("Score: " + score, 15, 20);
+  textAlign(RIGHT, CENTER);
+  for (let i = 0; i < MAX_MISSES; i++) {
+    if (i < MAX_MISSES - misses) fill(220, 60, 100); else fill(200, 160, 175);
+    text("♥", width - 15 - i * 30, 20);
+  }
+  textAlign(CENTER, CENTER); text("Level: " + currentLevel.toUpperCase(), width / 2, 20);
+}
 
-    .unit-content img {
-      width: 100%;
-      max-width: 750px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 25px;
-    }
+function drawGameOverScreen() {
+  image(bgImg, 0, 0, width, height);
+  fill(180, 40, 80); textSize(40); text("Game Over!", width / 2, 70);
+  let boxW = 300; let boxH = 120; let boxX = width / 2 - boxW / 2; let boxY = 110;
+  fill(255, 235, 245); rect(boxX, boxY, boxW, boxH, 18);
+  fill(120, 30, 70); textSize(18); text("Final Score", width / 2, boxY + 25);
+  fill(200, 50, 90); textSize(42); text(score, width / 2, boxY + 65);
+  textSize(14); text("Misses: " + misses + "/" + MAX_MISSES, width / 2, boxY + 95);
+  playAgainButton.x = width / 2 - playAgainButton.w / 2; playAgainButton.y = 260;
+  fill(255, 140, 180); rect(playAgainButton.x, playAgainButton.y, playAgainButton.w, playAgainButton.h, 14);
+  fill(255); textSize(20); text("Play Again", width / 2, playAgainButton.y + playAgainButton.h / 2);
+}
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: white;
-      color: #931061;
-      margin-top: 50px;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">Sophia’s Portfolio</h1>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">My Projects</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="gaming.html">Gaming Corner</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="unit-content">
-      <h2>Unit 4: Coming Soon</h2>
- 
-    </section>
-  </main>
-</body>
-</html>
+function resetGame() {
+  score = 0; misses = 0; nextSpawnTime = millis() + 500; buildHoles(); gameState = "play";
+}
+        </pre>
+      </div>
+    </div>
+    
+  </section>
+</div>
