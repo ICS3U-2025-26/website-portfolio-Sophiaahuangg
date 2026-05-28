@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Trivia Quiz</title>
+</head>
+<body>
+  <script>
+    alert("Welcome to the Simple Trivia Quiz!");
+    let score = 0;
+
+    // True or False Questions
+    let q1 = confirm("True or False: The sun rises in the east.");
+    if (q1 === true) {
+      alert("Correct!");
+      score++;
+    } else {
+      alert("Wrong!");
+    }
+
+    let q2 = confirm("True or False: Penguins can fly.");
+    if (q2 === false) {
+      alert("Correct!");
+      score++;
+    } else {
+      alert("Wrong!");
+    }
+
+    let q3 = confirm("True or False: There are 24 hours in a day.");
+    if (q3 === true) {
+      alert("Correct!");
+      score++;
+    } else {
+      alert("Wrong!");
+    }
+
+    // Input Questions
+    let q4 = prompt("What color is the sky on a clear day?");
+    if (q4 && q4.toLowerCase() === "blue") {
+      alert("Correct!");
+      score++;
+    } else {
+      alert("Wrong! The answer is blue.");
+    }
+
+    let q5 = prompt("How many legs does a cat have?");
+    if (q5 === "4") {
+      alert("Correct!");
+      score++;
+    } else {
+      alert("Wrong! The answer is 4.");
+    }
+
+    alert("You got " + score + "/5 correct!");
+  </script>
+</body>
+</html>
+
+
+

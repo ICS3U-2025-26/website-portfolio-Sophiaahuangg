@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Sophia’s Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* About Me Page Styling */
+    .about-me {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 40px;
+      background-color: #fff0f8;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .about-me h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5em;
+      color: #861d61;
+      margin-bottom: 20px;
+    }
+
+    .about-me p {
+      font-size: 1.2em;
+      color: #5a004a;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* Interests / Images Section */
+    .about-me-images {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .about-me-images img {
+      width: 250px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-me-images img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: white;
+      color: #931061;
+      margin-top: 50px;
+      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Sophia’s Portfolio</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li class="active"><a href="about.html">About Me</a></li>
+        <li><a href="gaming.html">Gaming Corner</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Me Section -->
+  <main>
+    <section class="about-me">
+      <h2>About Me</h2>
+      <p>
+        Hi! I’m Sophia, and I love spending time with my friends and family—they inspire me and make life fun every day. I’m passionate about rhythmic gymnastics, which challenges me to stay disciplined and creative, and I enjoy snowboarding as a way to explore the outdoors and stay adventurous. While I also like exploring coding and technology projects, my greatest joys come from the people I care about and the activities that make me feel energized and happy.
+      </p>
+
+      <div class="about-me-images">
+        <img src="images/gymnastics.jpg" alt="Rhythmic Gymnastics">
+        <img src="images/snowboarding.jpg" alt="Snowboarding">
+        <img src="images/friends3.jpg" alt="Sophia with friends">
+        <img src="images/friends1.jpg" alt="Sophia with friends">
+        <img src="images/friends2.jpg" alt="Sophia with friends">
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
